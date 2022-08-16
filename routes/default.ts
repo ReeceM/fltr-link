@@ -7,7 +7,7 @@ import type { Links } from '../routes/links.ts'
 export const router = new Router()
 
 router.get('/', (ctx: Context) => {
-    ctx.response.redirect('https://feel.co.id/')
+    ctx.response.redirect('https://reecemay.me')
 })
 
 router.get('/api', (ctx: Context) => {
@@ -21,7 +21,7 @@ router.get('/healthcheck', (ctx: Context) => {
 router.get('/:slug', async (ctx: Context) => {
     const { slug } = getQuery(ctx, { mergeParams: true })
     const { data } = await supabase.from<Links>('links').select().eq('slug', slug).limit(1).single()
-    if (!data) return ctx.response.redirect(`https://feel.co.id/404?ref=fltr&path=${slug}`)
+    if (!data) return ctx.response.redirect(`https://reecemay.me/404?ref=fltr&path=${slug}`)
 
     await supabase
         .from<Links>('links')
